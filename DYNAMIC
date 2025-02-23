@@ -1,0 +1,39 @@
+------------------------FIBONACCI IN C -------------------------------------
+#include <stdio.h>
+
+// Function to calculate Fibonacci using memoization
+int fibonacci(int n, int dp[]) {
+    if (n <= 1) {
+        return n;
+    }
+    // Check if already calculated
+    if (dp[n] != -1) {
+        return dp[n];
+    }
+    // Store the result in dp array
+    dp[n] = fibonacci(n - 1, dp) + fibonacci(n - 2, dp);
+    return dp[n];
+}
+
+int main() {
+    int n, i;
+    
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    
+    // Array to store computed Fibonacci numbers
+    int dp[n + 1];
+
+    // Initialize with -1 (indicating not calculated yet)
+    for (i = 0; i <= n; i++) {
+        dp[i] = -1;
+    }
+
+    printf("Fibonacci Series: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i, dp));
+    }
+
+    printf("\n");
+    return 0;
+}
