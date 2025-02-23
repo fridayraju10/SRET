@@ -1,0 +1,144 @@
+---------------------OVELOADING-CHANGE OF NO OF ARGUMENT------------------------------
+class Calculator 
+{
+   int add(int a, int b) 
+   {
+     return a + b;
+   }
+   int add(int a, int b, int c) 
+   {
+     return a + b + c;
+   }
+}
+
+public class Main 
+{
+  public static void main(String[] args)
+  {
+    Calculator calc = new Calculator();
+    System.out.println("Sum of 2 numbers: " + calc.add(5, 10));
+    System.out.println("Sum of 3 numbers: " + calc.add(5, 10, 15));
+  }
+}
+------------------------------------CHANGE IN TYPEOF ARGUEMENT------------------------
+class Printer 
+{
+  void print(int num) 
+  {
+    System.out.println("Integer: " + num);
+  }
+  void print(double num) 
+  {
+    System.out.println("Double: " + num);
+  }
+  void print(String text) 
+  {
+    System.out.println("String: " + text);
+  }
+}
+public class Main 
+{
+  public static void main(String[] args) 
+  {
+    Printer printer = new Printer();
+    printer.print(100);
+    printer.print(99.99);
+    printer.print("Hello, Java!");
+  }
+}
+--------------------------OVERRIDING-------------------------------------
+class Emp 
+{ 
+    String name, cName; 
+    int empId; 
+    double sal;
+    String designation="Employee";
+
+   Emp(String name, String cName, int empId, double sal) 
+    {
+      this.name = name;
+      this.cName = cName;
+      this.empId = empId;
+      this.sal = sal;
+    }
+
+    double Tax() 
+    {
+      return sal * 0.1; 
+    }
+
+    void display() 
+    {
+      System.out.println("Employee Details:");
+      System.out.println("Designation:"+designation);
+      System.out.println("Name: " + name);
+      System.out.println("Company: " + cName);
+      System.out.println("Employee ID: " + empId);
+      System.out.println("Salary: " + sal);
+      System.out.println("Tax Deduction: " +Tax());
+   }
+}
+
+class BoardMembers extends Emp 
+{ 
+    int pp;
+    String designation="Board Members ";
+    BoardMembers(String name, String cName, int empId, double sal, int pp) 
+    {
+      super(name, cName, empId, sal);
+      this.pp = pp;
+    }
+
+    double Profit(double companyProfit)
+    {
+      return (companyProfit * pp) / 100;
+    }
+
+    void display(double companyProfit) 
+    {
+      super.display();
+      System.out.println("Profit Share Percentage: " + pp + "%");
+      System.out.println("Profit Sharing Amount: " + Profit(companyProfit));
+    }
+}
+
+class Directors extends BoardMembers 
+{ 
+    int hp;
+
+    Directors(String name, String cName, int empId, double sal, int pp, int hp) 
+    {
+      super(name, cName, empId, sal,pp);
+      this.hp = hp;
+    }
+
+    double Hra() 
+    {
+      return (sal * hp) / 100;
+    }
+
+    void display(double companyProfit) 
+    {
+      super.display(companyProfit);
+      System.out.println("HRA Percentage: " + hp + "%");
+      System.out.println("HRA Amount: " + Hra());
+    }
+}
+
+public class Main 
+{ 
+    public static void main(String[] args) 
+    { 
+      Emp e = new Emp("RAJU", "TCS", 101, 50000); 
+      BoardMembers b = new BoardMembers("ANU", "CTS", 102, 80000, 5); 
+      Directors d = new Directors("ROSY", "ZOHO", 103, 100000, 10, 15);
+
+      double companyProfit = 500000;
+    
+      emp.display();
+      System.out.println("--------------------------------");
+      boardMember.display(companyProfit);
+      System.out.println("--------------------------------");
+      director.display(companyProfit);
+   }
+}
