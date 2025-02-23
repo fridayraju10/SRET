@@ -1,0 +1,50 @@
+------------------------------OOPS REVISION-----VARGS-------------------------
+class Example
+{
+    Example(String[] vargs)
+    {
+        for(String name : vargs)
+        {
+            System.out.println("Hello " + name + " ");
+        }
+    }
+}
+
+public class Main
+{
+    public static void main (String[] args) 
+    {
+        Example E = new Example(new String[]{"Raju", "Varma"});
+    }
+}
+---------------------------------LCM VARGS--------------------------------------------------
+class LCMCalculator {
+    private static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    static int findLCM(int... numbers) {
+        if (numbers.length == 0) {
+            throw new IllegalArgumentException("At least one number is required");
+        }
+
+        int lcm = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            lcm = (lcm * numbers[i]) / gcd(lcm, numbers[i]);
+        }
+        return lcm;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("LCM of 12, 18, 24: " + LCMCalculator.findLCM(12, 18));
+        System.out.println("LCM of 5, 10, 15, 20: " + LCMCalculator.findLCM(5, 10, 15, 20));
+        System.out.println("LCM of 7, 11, 13: " + LCMCalculator.findLCM(7, 11, 13));
+    }
+}
