@@ -1,0 +1,76 @@
+class Shape 
+{
+   double area;
+   final void calculateArea() 
+   {
+     System.out.println("Calculating area...");
+   }
+}
+
+class Circle extends Shape 
+{
+   double radius;
+   Circle(double radius) 
+   {
+     this.radius = radius;
+   }
+   void calculateArea() 
+   {
+     area = 3.14 * radius * radius;
+     System.out.println("Circle Area: " + area);
+   }
+}
+
+class Rectangle extends Shape 
+{
+   double length, width;
+   Rectangle(double length, double width) 
+   {
+     this.length = length;
+     this.width = width;
+   }
+   void calculateArea() 
+   {
+     area = length * width;
+     System.out.println("Rectangle Area: " + area);
+   }
+}
+public class Main 
+{
+  public static void main(String[] args) 
+  {
+    Circle circle = new Circle(5);
+    Rectangle rectangle = new Rectangle(4, 6);
+    circle.calculateArea();
+    rectangle.calculateArea();
+  }
+}
+-----------------------------------------------------------------
+class Student {
+    String name;
+    int age;
+    static String dept = "Computer Science"; 
+
+    Student(String a, int b) {  
+        name = a;
+        age = b;
+    }
+
+    void display() {
+        System.out.println("Name is " + name + " and his/her age is " + age + " Studying in " + dept);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {  
+        Student s1 = new Student("Raju", 35);
+        Student s2 = new Student("Jessy", 21);
+        Student s3 = new Student("Arun", 56);
+        s3.name="Rizwan";
+        s3.dept="CSE";
+
+        s1.display();
+        s2.display();
+        s3.display();
+    }
+}
